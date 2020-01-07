@@ -7,12 +7,21 @@ const Login: AsyncComponent = (): any =>
   import(
     /* webpackChunkName: "Login" */ "@/views/Login.vue"
   );
+const Chatting: AsyncComponent = (): any => 
+import(
+  /* webpackChunkName: "Chatting" */ "@/views/chatting/chatting.vue"
+);
 
 const routes = [
   {
     path: "/",
     name: "Login",
     component: Login
+  },
+  {
+    path: "/chatting",
+    name: "Chatting",
+    component: Chatting
   }
 ];
 

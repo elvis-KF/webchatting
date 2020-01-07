@@ -81,14 +81,14 @@ class Loader extends Vue {
     }
   }
 
-  getInterface (type: string) {
+  getInterface(type: string) {
     let res = result(interfaces, type)
     if (!res) {
         throw new Error(
             `type:${type}错误，找不到类型为${type}的interface,请check接口是否存在。`
         )
     }
-    return res
+    return res;
   }
 }
-export default Loader
+export default Loader;
