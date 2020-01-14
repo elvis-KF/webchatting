@@ -4,12 +4,32 @@
     .chatting-user-box
       .chatting-user-info-box
         .chatting-user-avatar-box
+          img(src="../../assets/default.jpg")
         .chatting-user-detail-box
           .chatting-user-name
-            | 丘小峰
+            span 丘小峰
+            img(src="../../assets/active.png")
           .chatting-user-signature
             | 少时诵诗书舒舒
       .chatting-user-friends-box
+        .chatting-user-friends-item-box
+          .chatting-user-avatar-box
+            img(src="../../assets/default.jpg")
+          .chatting-user-detail-box
+            .chatting-user-name
+              span 丘小峰
+              img(src="../../assets/active.png")
+            .chatting-user-signature
+              | 少时诵诗书舒舒
+        .chatting-user-friends-item-box
+          .chatting-user-avatar-box
+            img(src="../../assets/default.jpg")
+          .chatting-user-detail-box
+            .chatting-user-name
+              span 丘小峰
+              img(src="../../assets/active.png")
+            .chatting-user-signature
+              | 少时诵诗书舒舒
     .chatting-window-box
 </template>
 <script lang="ts">
@@ -26,31 +46,84 @@ class Chatting extends Mixins(loader) {
 export default Chatting;
 </script>
 <style lang="scss">
-.signUp {
-  .user-info {
-    width: 300px;
-    margin: 0 auto;
-    margin-bottom: 20px;
-  }
-  .user-info-row {
+.chatting-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../../assets/background1.png);
+  // opacity: .7;
+  .chatting-content-box {
     display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    .user-info-label {
-      display: inline-block;
-      width: 70px;
-      margin-right: 10px;
-      text-align: right;
-      font-size: 14px;
+    width: 1000px;
+    height: 700px;
+    margin: 0 auto;
+    background: #FFFEEE;
+    opacity: .6;
+    position: relative;
+    top: 50%;
+    margin-top: 350;
+    transform: translateY(-50%);
+    // border-radius: 10px;
+    .chatting-user-box {
+      box-sizing: border-box;
+      width: 320px;
+      // padding: 20px;
+      border-right: 1px solid #ced0d6;
+      .chatting-user-info-box {
+        display: flex;
+        align-items: center;
+        height: 60px;
+        padding: 15px;
+        border-bottom: 1px solid #ced0d6;
+      }
+      .chatting-user-avatar-box {
+        width: 50px;
+        height: 50px;
+        & > img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .chatting-user-detail-box {
+        width: 220px;
+        margin-left: 10px;
+        text-align: left;
+        & > div {
+          width: 100%;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+        .chatting-user-name {
+          width: 70%;
+          span, img {
+            display: inline-block;
+            vertical-align: middle;
+          } 
+          img {
+            width: 18px;
+            height: 18px;
+            margin-left: 8px;
+            cursor: pointer;
+          }
+        }
+        .chatting-user-signature {
+          margin-top: 5px;
+        }
+      }
+      .chatting-user-friends-box {
+        height: 600px;
+        overflow-y: auto;
+      }
+      .chatting-user-friends-item-box{
+        display: flex;
+        padding: 15px;
+        &:hover {
+          background: #e5e6e6;
+        }
+      }
     }
-    .el-input {
-      width: 210px;
-    }
-  }
-  .el-dialog__footer {
-    text-align: center;
-    button:last-child {
-      margin-left: 20px;
+    .chatting-window-box {
+      width: 680px;
     }
   }
 }
