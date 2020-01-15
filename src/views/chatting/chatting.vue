@@ -12,25 +12,20 @@
           .chatting-user-signature
             | 少时诵诗书舒舒
       .chatting-user-friends-box
-        .chatting-user-friends-item-box
+        .chatting-user-friends-item-box(v-for="item in friendList" @click="openChatWindow")
           .chatting-user-avatar-box
             img(src="../../assets/default.jpg")
           .chatting-user-detail-box
             .chatting-user-name
-              span 丘小峰
-              img(src="../../assets/active.png")
+              span {{item.name}}
+              template(v-if="item.avatar")
+                img(:src="item.avatar")
+              template(v-else)
+                img(src="../../assets/active.png")
             .chatting-user-signature
-              | 少时诵诗书舒舒
-        .chatting-user-friends-item-box
-          .chatting-user-avatar-box
-            img(src="../../assets/default.jpg")
-          .chatting-user-detail-box
-            .chatting-user-name
-              span 丘小峰
-              img(src="../../assets/active.png")
-            .chatting-user-signature
-              | 少时诵诗书舒舒
+              | {{item.sign}}
     .chatting-window-box
+      .chatting-
 </template>
 <script lang="ts">
 import Component from "vue-class-component";
@@ -42,6 +37,17 @@ import { Watch, Prop, Mixins } from "vue-property-decorator";
   components: {}
 })
 class Chatting extends Mixins(loader) {
+  friendList: Array<Object> = [
+    {
+      avatar: "",
+      name: "朋友1",
+      sign: "个性签名1",
+      status: 1 //0离线 1在线
+    }
+  ];
+  openChatWindow() {
+
+  }
 }
 export default Chatting;
 </script>
@@ -56,11 +62,10 @@ export default Chatting;
     width: 1000px;
     height: 700px;
     margin: 0 auto;
-    background: #FFFEEE;
-    opacity: .6;
+    background: #FFFFFF;
+    opacity: .9;
     position: relative;
     top: 50%;
-    margin-top: 350;
     transform: translateY(-50%);
     // border-radius: 10px;
     .chatting-user-box {
@@ -72,7 +77,7 @@ export default Chatting;
         display: flex;
         align-items: center;
         height: 60px;
-        padding: 15px;
+        padding: 10px 15px;
         border-bottom: 1px solid #ced0d6;
       }
       .chatting-user-avatar-box {
