@@ -27,7 +27,20 @@
                 | {{item.sign}}
             img.status-img(src="../../assets/active.png")
     .chatting-window-box
-      .chatting-
+      .chatting-window-title-box
+        | 聊天窗口
+      .chatting-window-chat-box
+        .chatting-window-self-box
+          img(src="../../assets/default.jpg")
+          .chatting-window-self-message 你好呀
+        .chatting-window-friend-box
+          img(src="../../assets/default.jpg")
+          .chatting-window-friend-message 你好呀
+      .chatting-window-emoji-box
+        img(src="../../assets/emoji.png")
+      .chatting-window-send-box(contenteditable="true")
+      .chatting-window-button-box 
+        span 发送(S)
 </template>
 <script lang="ts">
 import Component from "vue-class-component";
@@ -39,7 +52,7 @@ import { Watch, Prop, Mixins } from "vue-property-decorator";
   components: {}
 })
 class Chatting extends Mixins(loader) {
-  currentClickIndex: string | number = '';
+  currentClickIndex: string | number = "";
 
   friendList: Array<Object> = [
     {
@@ -60,7 +73,6 @@ export default Chatting;
   width: 100vw;
   height: 100vh;
   background-image: url(../../assets/background1.png);
-  // opacity: .7;
   .middle {
     align-items: center;
   }
@@ -69,12 +81,11 @@ export default Chatting;
     width: 1000px;
     height: 700px;
     margin: 0 auto;
-    background: #FFFFFF;
-    opacity: .9;
+    background: #ffffff;
+    opacity: 0.9;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-    // border-radius: 10px;
     .chatting-user-box {
       box-sizing: border-box;
       width: 320px;
@@ -94,7 +105,7 @@ export default Chatting;
           }
         }
       }
-      .chatting-user-avatar-box{
+      .chatting-user-avatar-box {
         width: 50px;
         height: 50px;
         & > img {
@@ -111,10 +122,11 @@ export default Chatting;
           width: 100%;
           display: flex;
           justify-content: space-between;
-          span, img {
+          span,
+          img {
             display: inline-block;
             vertical-align: middle;
-          } 
+          }
           img {
             width: 25px;
             height: 25px;
@@ -135,7 +147,7 @@ export default Chatting;
         height: 600px;
         overflow-y: auto;
       }
-      .chatting-user-friends-item-box{
+      .chatting-user-friends-item-box {
         display: flex;
         padding: 15px;
         font-size: 15px;
@@ -172,6 +184,84 @@ export default Chatting;
     }
     .chatting-window-box {
       width: 680px;
+      .chatting-window-title-box {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #e5e6e6;
+      }
+      .chatting-window-chat-box {
+        height: 450px;
+        padding: 15px;
+        .chatting-window-self-box {
+          display: flex;
+          flex-direction: row-reverse;
+          align-items: center;
+          margin-top: 10px;
+          img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+          }
+          .chatting-window-self-message {
+            max-width: 350px;
+            background: #e9eaee;
+            text-align: left;
+            margin-right: 10px;
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 14px;
+          }
+        }
+        .chatting-window-friend-box {
+          display: flex;
+          align-items: center;
+          margin-top: 10px;
+          img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+          }
+          .chatting-window-friend-message {
+            max-width: 350px;
+            background: #ffffff;
+            text-align: left;
+            margin-left: 10px;
+            border: 1px solid #e9e9e9;
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 14px;
+          }
+        }
+      }
+      .chatting-window-emoji-box {
+        height: 20px;
+        padding: 10px 15px;
+        text-align: left;
+        background: #d0d0d0;
+        img {
+          width: 20px;
+          height: 20px;
+          cursor: pointer;
+        }
+      }
+      .chatting-window-send-box {
+        padding: 10px 15px;
+        height: 80px;
+        text-align: left;
+        font-size: 14px;
+        &:focus {
+          outline: 0;
+        }
+      }
+      .chatting-window-button-box {
+        padding: 0 15px;
+        text-align: right;
+        font-size: 15px;
+        cursor: pointer;
+        span:hover {
+          color: #188AFD;
+        }
+      }
     }
   }
   .gray {
